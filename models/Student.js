@@ -5,10 +5,6 @@ const StudentSchema = mongoose.Schema({
         type:String,
         required:true
     },
-    StudentID:{
-        type:Number,
-        required:true,
-    },
     Interest:{
         type:Object,
         ref:'Interest',
@@ -16,7 +12,14 @@ const StudentSchema = mongoose.Schema({
     },
     Enrolled:{
         type:Boolean,
-        required:true
+        default:false,
+        required:false
+    },
+    Teacher:{
+        type:Object,
+        ref:'Teacher',
+        default:"none",
+        required:false,
     }
 })
 

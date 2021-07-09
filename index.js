@@ -6,6 +6,8 @@ const connectDB = require('./db/db');
 
 dotenv.config();
 
+app.use(express.json());
+
 app.listen(port, () => {console.log(`Server is successfully running at port ${port}`)});
 
 const readAll = require('./routes/read');
