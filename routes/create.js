@@ -37,4 +37,27 @@ router.post('/newstudent',async(req,res)=>{
 
 })
 
+router.post('/newteacher',async(req,res)=>{
+
+    const {Fullname,Experience,Weekends} = req.body;
+
+    try{
+        const newTeacher = await new Teacher({
+            Fullname:Fullname,
+            Experience:Experience,
+            Weekends:Weekends
+        })
+    
+        newTeacher.save();
+    
+        res.json(newTeacher);
+        console.log(newTeacher);
+    }
+
+    catch(err){
+        console.error(err);
+    }
+
+})
+
 module.exports = router;

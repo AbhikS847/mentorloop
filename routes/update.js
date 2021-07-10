@@ -23,5 +23,19 @@ router.put('/student',async(req,res)=>{
     res.json(updateStudent);
 })
 
+router.put('/teacher',async(req,res)=>{
+    const {id,Fullname,Experience,Weekends} = req.body;
+
+    const updateTeacher = await Teacher.findByIdAndUpdate(id,{
+        Fullname:Fullname,
+        Experience:Experience,
+        Weekends:Weekends
+    })
+
+    updateTeacher.save();
+
+    res.json(updateTeacher);
+})
+
 
 module.exports = router;

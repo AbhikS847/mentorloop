@@ -28,6 +28,27 @@ router.delete('/student',async(req,res)=>{
     }
 })
 
+router.delete('/teacher',async(req,res)=>{
+
+    const {id} = req.body;
+
+    try{
+
+    console.log(`Selected teacher with ${id} has been deleted`);
+        
+    await Teacher.findByIdAndDelete(id);
+
+    res.json("Teacher deleted!");
+
+    
+    }
+
+    catch(err){
+        console.error(`Sorry unexpected error : ${err}`);
+    }
+})
+
+
 router.get('/deleteAll',async(req,res)=>{
 
     res.send("Dummy data all deleted");
