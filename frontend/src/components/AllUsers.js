@@ -1,7 +1,16 @@
 import React from 'react';
 import axios from 'axios';
+import { useEffect,useState} from 'react';
 
 const AllUsers = () => {
+
+    const [state,setState] = useState({
+        Fullname:"",
+        Enrolled:false,
+        Teacher:"",
+        Interest:[],
+        id:0,
+    })
 
     const allUsers = async() =>{
         try{
@@ -22,7 +31,7 @@ const AllUsers = () => {
             <hr />
             <ul>
                 <li>
-                    <b>Student Name - {}</b>
+
                 </li>
             </ul>
         </div>
