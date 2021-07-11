@@ -4,7 +4,7 @@ import axios from 'axios';
 const AllUsers = () => {
     return (
         <div>
-            <h2>This shows all users</h2>
+            <h2 className="text-center">This shows all users</h2>
         </div>
     )
 }
