@@ -17,17 +17,23 @@ const CreateUsers = () => {
         ]
     })
 
-    useEffect(()=>{
+   useEffect(()=>{
         const getOptions = async() =>{
             const res = await axios.get('http://localhost:5000/teachers');
             const teachers = res.data;
             setState({
+                Student:{
+                    Fullname:"none",
+                    Interests:[],
+                    Teacher:'',
+                    Enrolled:false,
+                },
                 Teacher:teachers
             })
         }
 
         getOptions();
-    })
+    },[])
 
     return (
         <div>
@@ -37,7 +43,7 @@ const CreateUsers = () => {
                 <Row>
                     <Col className="my-2" xs={12} sm={4}>
                     <Form.Label><b>Fullname</b></Form.Label>
-                    <Form.Control placeholder="Example - John Smith" />
+                    <Form.Control placeholder="Example - John Smith" value={state.Student.Fullname}/>
                     </Col>
                     <Col className="my-2" xs={12} sm={8}>
                     <Form.Label><b>Interests</b></Form.Label>
@@ -74,7 +80,9 @@ const CreateUsers = () => {
           id="formHorizontalRadios2"
         />
                     </div>
-                    <Button type="submit" className="my-2" style={{width:'50%',marginLeft:'25%'}}>Create Student</Button>
+                    <Button onClick={()=>{
+                        alert(`Thanks for signing up`)
+                    }} type="" className="my-2" style={{width:'50%',marginLeft:'25%'}}>Create Student</Button>
                 </Row>
             </Form>
             </Container>

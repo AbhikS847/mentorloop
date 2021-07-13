@@ -17,7 +17,7 @@ const All = () => {
         }
 
         getAllUsers();
-    })
+    },[])
 
     return (
                     <div>

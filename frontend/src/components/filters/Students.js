@@ -17,7 +17,7 @@ const Students = () => {
         }
 
         getAllUsers();
-    })
+    },[])
 
 
     return (

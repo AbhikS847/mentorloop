@@ -17,7 +17,7 @@ const Teachers = () => {
         }
 
         getAllUsers();
-    })
+    },[])
 
 
     return (
