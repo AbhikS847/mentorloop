@@ -7,7 +7,10 @@ const CreateUsers = () => {
 
     const [state,setState] = useState({
         Student:{
-
+            Fullname:"",
+            Interests:[],
+            Teacher:'',
+            Enrolled:false,
         },
         Teacher:[
 
@@ -43,12 +46,12 @@ const CreateUsers = () => {
                     Seperate each interests with a comma. For example - Business, Arts, Science,Engineering, Health...
   </Form.Text>
                     </Col>
-                    <Col xs={12} className="my-2">
+                    <Col xs={12} sm={4} className="my-2">
                     <Form.Label><b>Teacher</b></Form.Label>
                     <Form.Control as="select" placeholder="Example - Arts, Graphics Design, etc...">
                     {state.Teacher.map((teacher)=>{
                         return(
-                            <option>{teacher.Fullname}</option>
+                            <option key={teacher._id}>{teacher.Fullname}</option>
                         )
                     })}
       </Form.Control>
@@ -56,6 +59,22 @@ const CreateUsers = () => {
       Select a teacher from the dropdown list
   </Form.Text>
                     </Col>
+                    <hr></hr>
+                    <div className="d-flex justify-content-center">
+                    <Form.Check className=" px-3"
+          type="radio"
+          label="Enrolled"
+          name="formHorizontalRadios"
+          id="formHorizontalRadios1"
+        />
+        <Form.Check className="px-3"
+          type="radio"
+          label="Unenrolled"
+          name="formHorizontalRadios"
+          id="formHorizontalRadios2"
+        />
+                    </div>
+                    <Button type="submit" className="my-2" style={{width:'50%',marginLeft:'25%'}}>Create Student</Button>
                 </Row>
             </Form>
             </Container>

@@ -24,7 +24,7 @@ const Students = () => {
         <div>
                         {state.map((user)=>{
                 return(
-                    <div className="text-center">
+                    <div key={user._id} className="text-center">
                     <Card className="my-2" style={{ width: 'auto',backgroundColor:'crimson',color:'#FFF' }}>
   <Card.Body>
     <Card.Title><h4>Student ID: {user._id} </h4></Card.Title>

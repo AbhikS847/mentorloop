@@ -23,7 +23,7 @@ const All = () => {
                     <div>
             {state.map((user)=>{
                 return(
-                    <div className="text-center">
+                    <div key={user._id} className="text-center">
                     <Card className="my-2" style={{ width: 'auto',backgroundColor:'#2196f3',color:"#FFF" }}>
   <Card.Body>
     <Card.Title><h4>Student ID: {user._id} </h4></Card.Title>
