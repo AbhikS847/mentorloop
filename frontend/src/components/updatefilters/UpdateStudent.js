@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect,useState } from 'react';
 import axios from 'axios';
-import { Col,Form } from 'react-bootstrap';
+import { Col,Form,Row } from 'react-bootstrap';
 
 const UpdateStudent = () => {
 
@@ -40,8 +40,9 @@ const UpdateStudent = () => {
 
     return (
         <div>
-            Update student
-            <Col xs={12} sm={4} className="my-2">
+                                <Form>
+                                <Row>
+            <Col xs={12} sm={"auto"} className="my-2">
                     <Form.Label><b>Select Student</b></Form.Label>
                     <Form.Control as="select" onChange={(event)=>{
                         state.Student.Fullname = event.target.value
@@ -53,8 +54,14 @@ const UpdateStudent = () => {
                     })}
       </Form.Control>
       <Form.Text className="d-flex justify-content-center" muted>
-      Select a teacher from the dropdown list
+      Select a student from the dropdown list
   </Form.Text>
+                    </Col>
+                    <Col className="my-2" xs={12} sm={4}>
+                    <Form.Label><b>Fullname</b></Form.Label>
+                    <Form.Control placeholder="Example - John Smith" defaultValue={state.Student.Fullname} onChange={(event)=>{
+                        state.Student.Fullname = event.target.value;
+                    }}/>
                     </Col>
             <Col xs={12} sm={4} className="my-2">
                     <Form.Label><b>Teacher(Select)</b></Form.Label>
@@ -71,6 +78,8 @@ const UpdateStudent = () => {
       Select a teacher from the dropdown list
   </Form.Text>
                     </Col>
+                    </Row>
+                    </Form>
         </div>
     )
 }
