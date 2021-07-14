@@ -8,7 +8,7 @@ const CreateUsers = () => {
     const [state,setState] = useState({
         Student:{
             Fullname:"",
-            Interests:[],
+            Interests:"",
             Teacher:'',
             Enrolled:false,
         },
@@ -23,8 +23,8 @@ const CreateUsers = () => {
             const teachers = res.data;
             setState({
                 Student:{
-                    Fullname:"none",
-                    Interests:[],
+                    Fullname:"",
+                    Interests:"",
                     Teacher:'',
                     Enrolled:false,
                 },
@@ -33,7 +33,8 @@ const CreateUsers = () => {
         }
 
         getOptions();
-    },[])
+    },[]);
+
 
     return (
         <div>
@@ -47,14 +48,14 @@ const CreateUsers = () => {
                     </Col>
                     <Col className="my-2" xs={12} sm={8}>
                     <Form.Label><b>Interests</b></Form.Label>
-                    <Form.Control placeholder="Type in your interested areas" />
+                    <Form.Control placeholder="Type in your interested areas" value={state.Student.Interests}/>
                     <Form.Text className="d-flex justify-content-center" muted>
                     Seperate each interests with a comma. For example - Business, Arts, Science,Engineering, Health...
   </Form.Text>
                     </Col>
                     <Col xs={12} sm={4} className="my-2">
-                    <Form.Label><b>Teacher</b></Form.Label>
-                    <Form.Control as="select" placeholder="Example - Arts, Graphics Design, etc...">
+                    <Form.Label><b>Teacher(Select)</b></Form.Label>
+                    <Form.Control as="select">
                     {state.Teacher.map((teacher)=>{
                         return(
                             <option key={teacher._id}>{teacher.Fullname}</option>
@@ -80,9 +81,7 @@ const CreateUsers = () => {
           id="formHorizontalRadios2"
         />
                     </div>
-                    <Button onClick={()=>{
-                        alert(`Thanks for signing up`)
-                    }} type="" className="my-2" style={{width:'50%',marginLeft:'25%'}}>Create Student</Button>
+                    <Button type="" className="my-2" style={{width:'50%',marginLeft:'25%'}}>Create Student</Button>
                 </Row>
             </Form>
             </Container>
