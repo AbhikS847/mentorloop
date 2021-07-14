@@ -19,6 +19,7 @@ const CreateUsers = () => {
 
     const handleClick = () =>{
         console.log(state.Student);
+
     }
 
    useEffect(()=>{
