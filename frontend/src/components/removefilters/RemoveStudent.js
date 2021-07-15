@@ -4,6 +4,9 @@ import { useEffect,useState } from 'react';
 import { Col,Form,Row,Button } from 'react-bootstrap';
 
 const RemoveStudent = () => {
+    let i;
+    let name;
+    let deleteID;
 
     const [state,setState] = useState({
         Students:[],
@@ -34,15 +37,24 @@ const RemoveStudent = () => {
 
     const checkforID = (event) =>{
         state.Student.Fullname = event.target.value;
-        let i;
-        let name;
         for(i=0;i<state.Students.length;i++){
             name = state.Students[i].Fullname;
             if(name === state.Student.Fullname){
-                state.Student.id = state.Students[i]._id;
-                console.log(state.Student.id);
+                state.Student._id = state.Students[i]._id;
+                state.Student.Fullname = state.Students[i].Fullname;
+                state.Student.Interest = state.Students[i].Interest;
+                state.Student.Teacher = state.Students[i].Teacher;
+                deleteID = state.Student._id;
+                console.log(state.Student._id);
+                console.log(state.Student.Teacher);
             }
         }
+        }
+
+        const handleClick = async()=>{
+            console.log(state.Student._id);
+            const res = await axios.delete('http://localhost:5000/remove/student',{id:deleteID});
+            console.log(res);
         }
 
     return(
@@ -61,6 +73,7 @@ const RemoveStudent = () => {
       <Form.Text className="d-flex justify-content-center" muted>
       Select a student from the dropdown list
   </Form.Text>
+  <Button className="btn btn-danger my-2" onClick={handleClick}>Remove Student</Button>
                     </Col>
         </Row>
         </Form>
