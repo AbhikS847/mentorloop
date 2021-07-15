@@ -39,21 +39,20 @@ const RemoveStudent = () => {
         state.Student.Fullname = event.target.value;
         for(i=0;i<state.Students.length;i++){
             name = state.Students[i].Fullname;
-            if(name === state.Student.Fullname){
+            if(state.Student.Fullname === name ){
                 state.Student._id = state.Students[i]._id;
-                state.Student.Fullname = state.Students[i].Fullname;
-                state.Student.Interest = state.Students[i].Interest;
-                state.Student.Teacher = state.Students[i].Teacher;
-                deleteID = state.Student._id;
                 console.log(state.Student._id);
-                console.log(state.Student.Teacher);
+                deleteID = state.Student._id;
+                return deleteID;
             }
         }
         }
 
         const handleClick = async()=>{
-            console.log(state.Student._id);
-            const res = await axios.delete('http://localhost:5000/remove/student',{id:deleteID});
+            state.Student._id = deleteID;
+            const res = await axios.delete('http://localhost:5000/remove/student',{
+                id:state.Student._id,
+            });
             console.log(res);
         }
 
