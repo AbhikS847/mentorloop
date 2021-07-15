@@ -58,13 +58,16 @@ const UpdateStudent = () => {
   </Form.Text>
                     </Col>
                     <Col className="my-2" xs={12} sm={4}>
-                    <Form.Label><b>Fullname</b></Form.Label>
+                    <Form.Label><b>Edit Fullname</b></Form.Label>
                     <Form.Control placeholder="Example - John Smith" defaultValue={state.Student.Fullname} onChange={(event)=>{
                         state.Student.Fullname = event.target.value;
                     }}/>
+                          <Form.Text className="d-flex justify-content-center" muted>
+                          Enter a name to update existing student
+  </Form.Text>
                     </Col>
             <Col xs={12} sm={4} className="my-2">
-                    <Form.Label><b>Teacher(Select)</b></Form.Label>
+                    <Form.Label><b>Edit Teacher(Select)</b></Form.Label>
                     <Form.Control as="select" onChange={(event)=>{
                         state.Student.Teacher = event.target.value
                     }} >
@@ -75,9 +78,34 @@ const UpdateStudent = () => {
                     })}
       </Form.Control>
       <Form.Text className="d-flex justify-content-center" muted>
-      Select a teacher from the dropdown list
+      Select a teacher to update for the student
   </Form.Text>
                     </Col>
+                    <Col className="my-2" xs={12} sm={12}>
+                    <Form.Label><b>Change Interests</b></Form.Label>
+                    <Form.Control placeholder="Type in your interested areas" defaultValue={state.Student.Interests} onChange={(event)=>{
+                        state.Student.Interests = event.target.value;
+                    }}/>
+                    <Form.Text className="d-flex justify-content-center" muted>
+                    Seperate each interests with a comma. For example - Business, Arts, Science,Engineering, Health, etc. Also, note that
+                    previous interests will be modified.
+  </Form.Text>
+                    </Col>
+                    <hr></hr>
+                    <div className="d-flex justify-content-center">
+                    <Form.Check onClick={()=>{state.Student.Enrolled=true}}className=" px-3"
+          type="radio"
+          label="Enroll"
+          name="formHorizontalRadios"
+          id="formHorizontalRadios1"
+        />
+        <Form.Check onClick={()=>{state.Student.Enrolled=false}} className="px-3"
+          type="radio"
+          label="Unenroll"
+          name="formHorizontalRadios"
+          id="formHorizontalRadios2"
+        />
+                    </div>
                     </Row>
                     </Form>
         </div>
