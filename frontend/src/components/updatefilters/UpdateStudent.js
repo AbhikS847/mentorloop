@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect,useState } from 'react';
 import axios from 'axios';
-import { Col,Form,Row } from 'react-bootstrap';
+import { Col,Form,Row,Button } from 'react-bootstrap';
 
 const UpdateStudent = () => {
 
@@ -9,7 +9,7 @@ const UpdateStudent = () => {
         Student:{
             _id:'',
             Fullname:'',
-            Interest:'',
+            Interests:'',
             Teacher:'',
             Enrolled:false
         },
@@ -26,7 +26,7 @@ const UpdateStudent = () => {
                 Student:{
                     _id:'',
                     Fullname:'',
-                    Interest:'',
+                    Interests:'',
                     Teacher:'',
                     Enrolled:false
                 },
@@ -38,6 +38,18 @@ const UpdateStudent = () => {
         getStudent();
     },[])
 
+    const handleClick = async() =>{
+        console.log(state.Student);
+        const data = axios.put('http://localhost:5000/update/student',{
+            _id:state.Student._id,
+            Fullname:state.Student.Fullname,
+            Interest:state.Student.Interests.split(","),
+            Enrolled:state.Student.Enrolled,
+            Teacher:state.Student.Teacher
+        })
+        console.log(data);
+    }
+
     return (
         <div>
                                 <Form>
@@ -45,7 +57,7 @@ const UpdateStudent = () => {
             <Col xs={12} sm={"auto"} className="my-2">
                     <Form.Label><b>Select Student</b></Form.Label>
                     <Form.Control as="select" onChange={(event)=>{
-                        state.Student.Fullname = event.target.value
+                        state.Student.Fullname = event.target.value;
                     }} >
                     {state.AllStudents.map((student)=>{
                         return(
@@ -107,6 +119,7 @@ const UpdateStudent = () => {
         />
                     </div>
                     </Row>
+                    <Button onClick={handleClick} type="" className="my-2" style={{width:'50%',marginLeft:'25%'}}>Update Student</Button>
                     </Form>
         </div>
     )
