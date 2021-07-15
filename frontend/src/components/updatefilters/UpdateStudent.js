@@ -40,6 +40,14 @@ const UpdateStudent = () => {
 
     const handleClick = async() =>{
         console.log(state.Student);
+        const res = await axios.put('http://localhost:5000/update/student',{
+            id:state.Student._id,
+            Fullname:state.Student.Fullname,
+            Interest:state.Student.Interests.split(","),
+            Enrolled:state.Student.Enrolled,
+            Teacher:state.Student.Teacher
+        });
+
     }
 
     return (
@@ -49,11 +57,11 @@ const UpdateStudent = () => {
             <Col xs={12} sm={"auto"} className="my-2">
                     <Form.Label><b>Select Student</b></Form.Label>
                     <Form.Control as="select" onChange={(event)=>{
-                        state.Student.Fullname = event.target.value;
+                        state.Student._id = event.target.value;
                     }} >
                     {state.AllStudents.map((student)=>{
                         return(
-                            <option key={student._id}>{student.Fullname}</option>
+                            <option key={student._id}>{student._id}</option>
                         )
                     })}
       </Form.Control>
