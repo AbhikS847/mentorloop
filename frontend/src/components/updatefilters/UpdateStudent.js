@@ -40,8 +40,7 @@ const UpdateStudent = () => {
 
     const handleClick = async() =>{
         console.log(state.Student);
-        const data = axios.put('http://localhost:5000/update/student',{
-            _id:state.Student._id,
+        const data = axios.put('http://localhost:5000/update/student',state.Student._id,{
             Fullname:state.Student.Fullname,
             Interest:state.Student.Interests.split(","),
             Enrolled:state.Student.Enrolled,
