@@ -9,18 +9,24 @@ router.get('/',(req,res)=>{
 })
 
 router.put('/student',async(req,res)=>{
-    const {id,Fullname,Interest,Enrolled,Teacher} = req.body;
+    try{
+        const {id,Fullname,Interest,Enrolled,Teacher} = req.body;
 
-    const updateStudent = await Student.findByIdAndUpdate(id,{
-        Fullname:Fullname,
-        Interest:Interest,
-        Enrolled:Enrolled,
-        Teacher:Teacher
-    })
+        const updateStudent = await Student.findByIdAndUpdate(id,{
+            Fullname:Fullname,
+            Interest:Interest,
+            Enrolled:Enrolled,
+            Teacher:Teacher
+        })
+    
+        updateStudent.save();
+    
+        res.json(updateStudent);
+    }
 
-    updateStudent.save();
-
-    res.json(updateStudent);
+    catch(err){
+        console.error(err);
+    }
 })
 
 router.put('/teacher',async(req,res)=>{
