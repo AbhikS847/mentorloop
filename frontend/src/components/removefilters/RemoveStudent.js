@@ -28,6 +28,10 @@ const RemoveStudent = () =>{
         getStudents();
     },[])
 
+    const handleClick = () =>{
+
+    }
+
     return(
         <div>
                                 <Form>
@@ -48,6 +52,7 @@ const RemoveStudent = () =>{
       Select a student from the dropdown list
   </Form.Text>
                     </Col>
+                    <Button className="btn btn-danger" onClick={handleClick} type="" className="my-2" style={{width:'50%',marginLeft:'25%'}}>Delete Student</Button>
                     </Row>
                     </Form>
         </div>

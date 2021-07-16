@@ -118,8 +118,8 @@ const UpdateStudent = () => {
           id="formHorizontalRadios2"
         />
                     </div>
-                    </Row>
                     <Button onClick={handleClick} type="" className="my-2" style={{width:'50%',marginLeft:'25%'}}>Update Student</Button>
+                    </Row>
                     </Form>
         </div>
     )
