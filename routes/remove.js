@@ -14,7 +14,7 @@ router.delete('/student',async(req,res)=>{
 
     try{
 
-    console.log(`Selected student with ${id} has been deleted`);
+    console.log(`Selected student with id ${id} has been deleted`);
         
     await Student.findByIdAndDelete(id);
 

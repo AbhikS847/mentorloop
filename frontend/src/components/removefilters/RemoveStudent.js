@@ -28,7 +28,12 @@ const RemoveStudent = () =>{
         getStudents();
     },[])
 
-    const handleClick = () =>{
+    const handleClick = async() =>{
+        alert (`Student with id ${state.student.id} has been deleted!`);
+        const res = await axios.delete('http://localhost:5000/remove/student',{
+            id:state.student.id
+        })
+        console.log(res)
 
     }
 
@@ -52,7 +57,7 @@ const RemoveStudent = () =>{
       Select a student from the dropdown list
   </Form.Text>
                     </Col>
-                    <Button className="btn btn-danger" onClick={handleClick} type="" className="my-2" style={{width:'50%',marginLeft:'25%'}}>Delete Student</Button>
+                    <Button variant="danger" onClick={handleClick} type="" className="my-2" style={{width:'50%',marginLeft:'25%'}}>Delete Student</Button>
                     </Row>
                     </Form>
         </div>
