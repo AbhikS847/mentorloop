@@ -61,7 +61,7 @@ const UpdateStudent = () => {
                     }} >
                     {state.AllStudents.map((student)=>{
                         return(
-                            <option key={student._id}>{student._id}</option>
+                            <option key={student._id} value={student._id}>{student.Fullname}</option>
                         )
                     })}
       </Form.Control>

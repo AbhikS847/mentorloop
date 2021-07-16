@@ -3,79 +3,53 @@ import axios from 'axios';
 import { useEffect,useState } from 'react';
 import { Col,Form,Row,Button } from 'react-bootstrap';
 
-const RemoveStudent = () => {
-    let i;
-    let name;
-    let deleteID;
+const RemoveStudent = () =>{
 
     const [state,setState] = useState({
         Students:[],
-        Student:{
-            _id:'',
-            Fullname:'',
-            Interest:'',
-            Teacher:''
-        } 
-    });
+        student:{
+            id:'',
+            Fullname:''
+        }
+    })
 
     useEffect(()=>{
-        const getAllStudents = async()=>{
+        const getStudents = async()=>{
             const res = await axios.get('http://localhost:5000/students');
             console.log(res.data);
             setState({
                 Students:res.data,
-                Student:{
-                    _id:'',
-                    Fullname:'',
-                    Interest:'',
-                    Teacher:''
+                student:{
+                    id:'',
+                    Fullname:''
                 }
             })
         }
-        getAllStudents();
+        getStudents();
     },[])
-
-    const checkforID = (event) =>{
-        state.Student.Fullname = event.target.value;
-        for(i=0;i<state.Students.length;i++){
-            name = state.Students[i].Fullname;
-            if(state.Student.Fullname === name ){
-                state.Student._id = state.Students[i]._id;
-                console.log(state.Student._id);
-                deleteID = state.Student._id;
-                return deleteID;
-            }
-        }
-        }
-
-        const handleClick = async()=>{
-            state.Student._id = deleteID;
-            const res = await axios.delete('http://localhost:5000/remove/student',{
-                id:state.Student._id,
-            });
-            console.log(res);
-        }
 
     return(
         <div>
-        <Form>
-        <Row>
-        <Col xs={12} sm={12} className="my-2">
+                                <Form>
+                                <Row>
+            <Col xs={12} sm={12} className="my-2">
                     <Form.Label><b>Select Student</b></Form.Label>
-                    <Form.Control as="select" onChange={checkforID} >
+                    <Form.Control as="select" onChange={(event)=>{
+                        state.student.id = event.target.value;
+                        console.log(state.student.id);
+                    }} >
                     {state.Students.map((student)=>{
                         return(
-                            <option key={student._id}>{student.Fullname}</option>
+                            <option key={student._id} value={student._id}>{student.Fullname}</option>
                         )
                     })}
       </Form.Control>
       <Form.Text className="d-flex justify-content-center" muted>
       Select a student from the dropdown list
   </Form.Text>
-  <Button className="btn btn-danger my-2" onClick={handleClick}>Remove Student</Button>
                     </Col>
-        </Row>
-        </Form>
+                    </Row>
+                    </Form>
         </div>
     )
 }
