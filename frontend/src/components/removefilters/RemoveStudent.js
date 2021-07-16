@@ -31,8 +31,10 @@ const RemoveStudent = () =>{
     const handleClick = async() =>{
         alert (`Student with id ${state.student.id} has been deleted!`);
         const res = await axios.delete('http://localhost:5000/remove/student',{
-            id:state.student.id
-        })
+            data:{
+                id:state.student.id
+            }
+        });
         console.log(res)
 
     }
